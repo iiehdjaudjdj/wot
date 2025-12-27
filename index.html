@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1a1a2e">
+    <title>Web of Trust Checker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body class="wot-body wot-dark">
+    <div class="wot-container">
+        <div class="wot-header">
+            <h1 class="wot-title">Web of Trust Checker</h1>
+            <button class="wot-theme-toggle" id="wotThemeToggle" aria-label="Toggle theme">
+                <i class="bi bi-moon-fill" id="wotThemeIcon"></i>
+            </button>
+        </div>
+        
+        <div class="wot-search-container">
+            <div class="wot-search-wrapper">
+                <i class="bi bi-shield-check wot-search-icon"></i>
+                <input 
+                    type="text" 
+                    class="wot-search-input" 
+                    id="wotSearchInput" 
+                    placeholder="Enter domain or URL (e.g., google.com)"
+                    autocomplete="off"
+                >
+                <button class="wot-search-btn" id="wotSearchBtn">
+                    <i class="bi bi-search"></i>
+                    <span>Check</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="wot-loading" id="wotLoading" style="display: none;">
+            <div class="wot-spinner"></div>
+            <p class="wot-loading-text">Loading...</p>
+        </div>
+        
+        <div class="wot-error" id="wotError" style="display: none;">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            <p class="wot-error-message" id="wotErrorMessage"></p>
+        </div>
+        
+        <div class="wot-results" id="wotResults" style="display: none;">
+            <div class="wot-main-card">
+                <div class="wot-domain-info">
+                    <h2 class="wot-domain-name" id="wotDomainName"></h2>
+                    <p class="wot-normalized-domain" id="wotNormalizedDomain"></p>
+                </div>
+                
+                <div class="wot-safety-section">
+                    <div class="wot-safety-card">
+                        <div class="wot-safety-header">
+                            <i class="bi bi-shield-fill" id="wotSafetyIcon"></i>
+                            <h3 class="wot-safety-title">Safety Status</h3>
+                        </div>
+                        <div class="wot-safety-content">
+                            <span class="wot-safety-status" id="wotSafetyStatus"></span>
+                            <div class="wot-reputation-bar">
+                                <div class="wot-reputation-fill" id="wotReputationFill"></div>
+                            </div>
+                            <div class="wot-reputation-info">
+                                <span class="wot-reputation-score" id="wotReputationScore"></span>
+                                <span class="wot-confidence-score" id="wotConfidenceScore"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="wot-safety-card">
+                        <div class="wot-safety-header">
+                            <i class="bi bi-shield-fill" id="wotChildSafetyIcon"></i>
+                            <h3 class="wot-safety-title">Child Safety</h3>
+                        </div>
+                        <div class="wot-safety-content">
+                            <div class="wot-reputation-bar">
+                                <div class="wot-reputation-fill" id="wotChildReputationFill"></div>
+                            </div>
+                            <div class="wot-reputation-info">
+                                <span class="wot-reputation-score" id="wotChildReputationScore"></span>
+                                <span class="wot-confidence-score" id="wotChildConfidenceScore"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="wot-categories-section" id="wotCategoriesSection" style="display: none;">
+                    <h3 class="wot-categories-title">Categories</h3>
+                    <div class="wot-categories-list" id="wotCategoriesList"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="wot-footer">
+            <p class="wot-credits">Reputation data provided by Web of Trust API</p>
+        </div>
+    </div>
+    
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
